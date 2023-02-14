@@ -2,7 +2,7 @@
 This mobile app provides you with a safe notepad for your mobile device.
 It is written in Xamarin.Froms (.NET Standard 2.1) for Android 10 or newer and requires your device to support SecureStorage and have a fingerprint sensor.
 
-![Program image](/Screenshots/Items.jpg | width=50)
+![Program image|9x16](/Screenshots/Items.jpg)
 
 ## Functionality
 ### Adding notes
