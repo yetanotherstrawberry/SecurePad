@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:SecurePad.ViewModels"
+             x:DataType="viewmodels:ItemDetailViewModel"
+             x:Class="SecurePad.Views.ItemDetailPage"
+             xmlns:resources="clr-namespace:SecurePad.Resources"
+             Title="{x:Static resources:AppResources.NOTE_DETAIL_TITLE}">
+    <StackLayout Spacing="20" Padding="15">
+        <Label Text="{x:Static resources:AppResources.ITEM_TITLE_LABEL}" FontSize="Medium" TextColor="Black" />
+        <Label Text="{Binding Text}" FontSize="Small" TextColor="Black" />
+        <Label Text="{x:Static resources:AppResources.ITEM_CONTENT_LABEL}" FontSize="Medium" TextColor="Black" />
+        <Label Text="{Binding Description}" FontSize="Small" TextColor="Black" />
+        <Button Text="{x:Static resources:AppResources.NOTE_EDIT_TITLE}" Command="{Binding EditCommand}" HorizontalOptions="FillAndExpand" />
+        <Button Text="{x:Static resources:AppResources.BUTTON_DELETE}" Command="{Binding DeleteCommand}" HorizontalOptions="FillAndExpand" />
+    </StackLayout>
+</ContentPage>

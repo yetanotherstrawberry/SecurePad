@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SecurePad.Views.ItemEditPage"
+             Shell.PresentationMode="ModalAnimated"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:viewmodels="clr-namespace:SecurePad.ViewModels"
+             x:DataType="viewmodels:ItemEditViewModel"
+             xmlns:resources="clr-namespace:SecurePad.Resources"
+             Title="{x:Static resources:AppResources.NOTE_EDIT_TITLE}"
+             ios:Page.UseSafeArea="true">
+    <ContentPage.Content>
+        <StackLayout Spacing="3" Padding="15">
+            <Label Text="{x:Static resources:AppResources.ITEM_TITLE_LABEL}" FontSize="Medium" />
+            <Editor Text="{Binding Text, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" />
+            <Label Text="{x:Static resources:AppResources.ITEM_CONTENT_LABEL}" FontSize="Medium" />
+            <Editor Text="{Binding Description, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" />
+            <StackLayout Orientation="Horizontal">
+                <Button Text="{x:Static resources:AppResources.BUTTON_CANCEL}" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand" />
+                <Button Text="{x:Static resources:AppResources.BUTTON_SAVE}" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

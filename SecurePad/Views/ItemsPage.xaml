@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SecurePad.Views.ItemsPage"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:viewmodels="clr-namespace:SecurePad.ViewModels"
+             x:DataType="viewmodels:ItemsViewModel"
+             xmlns:local="clr-namespace:SecurePad.ViewModels"
+             xmlns:resources="clr-namespace:SecurePad.Resources"
+             xmlns:model="clr-namespace:SecurePad.Models"
+             Title="{x:Static resources:AppResources.NOTES_TITLE}"
+             ios:Page.UseSafeArea="true">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Clear" Command="{Binding DeleteEverythingCommand}" />
+        <ToolbarItem Text="Password" Command="{Binding PasswordCommand}" />
+        <ToolbarItem Text="New" Command="{Binding AddItemCommand}" />
+    </ContentPage.ToolbarItems>
+    <RefreshView Command="{Binding LoadItemsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+        <CollectionView x:Name="ItemsListView"
+                ItemsSource="{Binding Items}"
+                SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Padding="10" x:DataType="model:Item">
+                        <Label Text="{Binding Name}"
+                            TextColor="Black"
+                            Style="{DynamicResource ListItemDetailTextStyle}"
+                            FontSize="15" />
+                        <Label Text="{Binding DateAdded}"
+                            TextColor="Black"
+                            HorizontalTextAlignment="End"
+                            Style="{DynamicResource ListItemDetailTextStyle}"
+                            FontSize="15" />
+                        <StackLayout Orientation="Horizontal" Spacing="3" Padding="15">
+                            <Button Text="Show"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:ItemsViewModel}}, Path=ItemTapped}"		
+                                CommandParameter="{Binding .}" HorizontalOptions="FillAndExpand" />
+                            <Button Text="Delete"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:ItemsViewModel}}, Path=ItemDelete}"		
+                                CommandParameter="{Binding Id}" HorizontalOptions="FillAndExpand" />
+                        </StackLayout>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </RefreshView>
+</ContentPage>
